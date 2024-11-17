@@ -33,4 +33,3 @@ steps:
     appName: 'CommunityPlatform'
     containers: 'communityplatform.azurecr.io/backend:$(Build.BuildId)'
   displayName: 'Deploy to Azure Web App'
-  
