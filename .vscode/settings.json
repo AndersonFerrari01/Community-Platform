@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/c9f19a68-3099-4c5f-876e-4d3dfdc55073/resourceGroups/NetworkWatcherRG/providers/Microsoft.Web/sites/APP-Community-Platform",
+    "appService.deploySubpath": "."
+}
