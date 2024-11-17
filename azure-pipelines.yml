@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
 steps:
 - task: NodeTool@0
@@ -16,6 +16,21 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+    echo Logging in to Azure...
+    az login --service-principal -u $(clientId) -p $(clientSecret) --tenant $(tenantId)
+  displayName: 'Login to Azure'
+
+- script: |
+    echo Building Docker image...
+    docker build -t communityplatform.azurecr.io/backend:$(Build.BuildId) .
+    echo Pushing Docker image to container registry...
+    docker push communityplatform.azurecr.io/backend:$(Build.BuildId)
+  displayName: 'Build and Push Docker Image'
+
+- task: AzureWebAppContainer@1
+  inputs:
+    azureSubscription: 'c9f19a68-3099-4c5f-876e-4d3dfdc55073'
+    appName: 'CommunityPlatform'
+    containers: 'communityplatform.azurecr.io/backend:$(Build.BuildId)'
+  displayName: 'Deploy to Azure Web App'
+  
