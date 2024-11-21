@@ -49,15 +49,15 @@ function App() {
           <button type="submit">Registrar</button>
         </form>
         <p>
-          Juntos <code>chegamos mais </code> longe.
+          Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
           className="App-link"
-          href="https://www.instagram.com/icavideira/"
+          href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Igreja Cristã A Videira
+          Learn React
         </a>
       </header>
     </div>
